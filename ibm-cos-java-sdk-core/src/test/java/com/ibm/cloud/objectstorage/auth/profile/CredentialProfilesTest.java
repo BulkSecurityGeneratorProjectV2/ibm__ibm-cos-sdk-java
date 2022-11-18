@@ -20,7 +20,7 @@ import com.ibm.cloud.objectstorage.auth.AWSSessionCredentials;
 import com.ibm.cloud.objectstorage.auth.BasicAWSCredentials;
 import com.ibm.cloud.objectstorage.auth.profile.internal.BasicProfile;
 import com.ibm.cloud.objectstorage.auth.profile.internal.Profile;
-
+import java.nio.file.Files;
 import org.junit.Test;
 
 import java.io.File;
@@ -200,7 +200,7 @@ public class CredentialProfilesTest {
     public void testReadUpdatedProfile() throws URISyntaxException, IOException {
         ProfilesConfigFile fixture = new ProfilesConfigFile(
                 ProfileResourceLoader.basicProfile().asFile());
-        File modifiable = File.createTempFile("UpdatableProfile", ".tst");
+        File modifiable = Files.createTempFile("UpdatableProfile", ".tst").toFile();
         ProfilesConfigFileWriter.dumpToFile(modifiable, true, fixture.getAllProfiles().values()
                 .toArray(new Profile[1]));
 

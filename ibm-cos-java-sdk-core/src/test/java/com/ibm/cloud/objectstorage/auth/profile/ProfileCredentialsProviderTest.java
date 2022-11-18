@@ -29,6 +29,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.lang.reflect.Field;
+import java.nio.file.Files;
 import java.util.Map;
 
 public class ProfileCredentialsProviderTest {
@@ -169,7 +170,7 @@ public class ProfileCredentialsProviderTest {
     public void testUpdate() throws Exception {
         ProfilesConfigFile fixture = new ProfilesConfigFile(
                 ProfileResourceLoader.basicProfile().asFile());
-        File modifiable = File.createTempFile("UpdatableProfile", ".tst");
+        File modifiable = Files.createTempFile("UpdatableProfile", ".tst").toFile();
         ProfilesConfigFileWriter.dumpToFile(modifiable, true, fixture.getAllProfiles().values()
                 .toArray(new Profile[1]));
 
@@ -198,7 +199,7 @@ public class ProfileCredentialsProviderTest {
     public void testForcedRefresh() throws Exception {
         ProfilesConfigFile profilesConfigFileBeforeRefresh = new ProfilesConfigFile(
                 ProfileResourceLoader.basicProfile().asFile());
-        File profilesFile = File.createTempFile("UpdatableProfile", ".tst");
+        File profilesFile = Files.createTempFile("UpdatableProfile", ".tst").toFile();
         ProfilesConfigFileWriter.dumpToFile(profilesFile, true,
                                             profilesConfigFileBeforeRefresh.getAllProfiles()
                                                     .values().toArray(new Profile[1]));
@@ -234,7 +235,7 @@ public class ProfileCredentialsProviderTest {
     public void testRefresh() throws Exception {
         ProfilesConfigFile profilesConfigFileBeforeRefresh = new ProfilesConfigFile(
                 ProfileResourceLoader.basicProfile().asFile());
-        File profilesFile = File.createTempFile("UpdatableProfile", ".tst");
+        File profilesFile = Files.createTempFile("UpdatableProfile", ".tst").toFile();
         ProfilesConfigFileWriter.dumpToFile(profilesFile, true,
                                             profilesConfigFileBeforeRefresh.getAllProfiles()
                                                     .values().toArray(new Profile[1]));

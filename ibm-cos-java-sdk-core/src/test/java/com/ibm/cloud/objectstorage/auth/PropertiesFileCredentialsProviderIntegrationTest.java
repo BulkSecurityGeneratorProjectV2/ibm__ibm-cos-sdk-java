@@ -23,7 +23,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.io.File;
 import java.io.FileWriter;
-
+import java.nio.file.Files;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -41,8 +41,7 @@ public class PropertiesFileCredentialsProviderIntegrationTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        file = File.createTempFile(String.valueOf(System.currentTimeMillis()),
-                fileName);
+        file = Files.createTempFile(String.valueOf(System.currentTimeMillis()), fileName).toFile();
 
         FileWriter fw = null;
         try {

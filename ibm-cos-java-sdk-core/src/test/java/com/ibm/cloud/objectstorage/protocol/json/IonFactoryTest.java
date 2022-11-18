@@ -25,7 +25,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLStreamHandler;
-
+import java.nio.file.Files;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,7 +51,7 @@ public class IonFactoryTest {
 
     @Test
     public void createParserFromFile() throws Exception {
-        File file = File.createTempFile("IonFactoryTest", null);
+        File file = Files.createTempFile("IonFactoryTest", null).toFile();
         file.deleteOnExit();
         assertThat(factory.createParser(file), instanceOf(IonParser.class));
     }

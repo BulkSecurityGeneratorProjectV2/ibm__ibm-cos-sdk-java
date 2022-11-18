@@ -22,6 +22,7 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
@@ -44,7 +45,7 @@ public class ProfilesConfigFileWriterTest {
 
     @Test
     public void testDumpToFile() throws IOException {
-        File tmpFile = File.createTempFile("credentials.", null);
+        File tmpFile = Files.createTempFile("credentials.", null).toFile();
 
         Profile[] abcd = {
                 new Profile("a", basicCredA),
@@ -71,7 +72,7 @@ public class ProfilesConfigFileWriterTest {
 
     @Test
     public void testModifyProfile() throws IOException {
-        File tmpFile = File.createTempFile("credentials.", null);
+        File tmpFile = Files.createTempFile("credentials.", null).toFile();
 
         Profile[] abcd = {
                 new Profile("a", basicCredA),
@@ -94,7 +95,7 @@ public class ProfilesConfigFileWriterTest {
 
     @Test
     public void testInsertProfile() throws IOException {
-        File tmpFile = File.createTempFile("credentials.", null);
+        File tmpFile = Files.createTempFile("credentials.", null).toFile();
 
         Profile[] abcd = {
                 new Profile("a", basicCredA),
@@ -112,7 +113,7 @@ public class ProfilesConfigFileWriterTest {
 
     @Test
     public void testModifyAndInsertProfile() throws IOException {
-        File tmpFile = File.createTempFile("credentials.", null);
+        File tmpFile = Files.createTempFile("credentials.", null).toFile();
 
         Profile[] abcd = {
                 new Profile("a", basicCredA),
@@ -186,7 +187,7 @@ public class ProfilesConfigFileWriterTest {
 
     @Test
     public void testRenameProfile() throws IOException {
-        File tmpFile = File.createTempFile("credentials.", null);
+        File tmpFile = Files.createTempFile("credentials.", null).toFile();
 
         Profile[] abcd = {
                 new Profile("a", basicCredA),
@@ -209,7 +210,7 @@ public class ProfilesConfigFileWriterTest {
 
     @Test
     public void testDeleteProfile() throws IOException {
-        File tmpFile = File.createTempFile("credentials.", null);
+        File tmpFile = Files.createTempFile("credentials.", null).toFile();
 
         Profile[] abcd = {
                 new Profile("a", basicCredA),
@@ -234,7 +235,7 @@ public class ProfilesConfigFileWriterTest {
      */
     @Test
     public void testInPlaceModificationErrorHandling() throws IOException {
-        File tmpFile = File.createTempFile("credentials.", null);
+        File tmpFile = Files.createTempFile("credentials.", null).toFile();
 
         Profile[] abcd = {
                 new Profile("a", basicCredA),
@@ -298,7 +299,7 @@ public class ProfilesConfigFileWriterTest {
     }
 
     private static File copyToTempFile(File file) throws IOException {
-        File tmpFile = File.createTempFile("credentials.", null);
+        File tmpFile = Files.createTempFile("credentials.", null).toFile();
         tmpFile.delete();
         FileUtils.copyFile(file, tmpFile);
         return tmpFile;

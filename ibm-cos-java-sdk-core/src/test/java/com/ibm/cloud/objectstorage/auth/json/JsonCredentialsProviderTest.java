@@ -11,7 +11,7 @@
 * specific language governing permissions and limitations under the License. 
 */
 package com.ibm.cloud.objectstorage.auth.json;
-
+import java.nio.file.Files;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -57,7 +57,7 @@ public class JsonCredentialsProviderTest {
     
     @Test
     public void testUpdate() throws Exception {
-    	File modifiable = File.createTempFile("UpdatableCredentials", ".json");
+    	File modifiable = Files.createTempFile("UpdatableCredentials", ".json").toFile();
     	copyFile(JsonResourceLoader.basicCredentials().asFile(), modifiable);
     	
     	JsonCredentialsProvider testProvider = new JsonCredentialsProvider(modifiable.getPath());
@@ -82,7 +82,7 @@ public class JsonCredentialsProviderTest {
 
     @Test
     public void testForcedRefresh() throws Exception {
-    	File modifiable = File.createTempFile("UpdatableCredentials", ".json");
+    	File modifiable = Files.createTempFile("UpdatableCredentials", ".json").toFile();
     	copyFile(JsonResourceLoader.basicCredentials().asFile(), modifiable);
     	
     	JsonCredentialsProvider testProvider = new JsonCredentialsProvider(modifiable.getPath());
@@ -108,7 +108,7 @@ public class JsonCredentialsProviderTest {
     
     @Test
     public void testRefresh() throws Exception {
-    	File modifiable = File.createTempFile("UpdatableCredentials", ".json");
+    	File modifiable = Files.createTempFile("UpdatableCredentials", ".json").toFile();
     	copyFile(JsonResourceLoader.basicCredentials().asFile(), modifiable);
     	
     	JsonCredentialsProvider testProvider = new JsonCredentialsProvider(modifiable.getPath());

@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-
+import java.nio.file.Files;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
@@ -49,7 +49,7 @@ public class Md5UtilsTest {
 
     @Test
     public void testFile() throws Exception {
-        File f = File.createTempFile("Md5UtilsTest-", "txt");
+        File f = Files.createTempFile("Md5UtilsTest-", "txt").toFile();
         f.deleteOnExit();
         FileUtils.writeStringToFile(f, "Testing MD5");
         byte[] md5 = Md5Utils.computeMD5Hash(f);
